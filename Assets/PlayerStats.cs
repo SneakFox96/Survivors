@@ -25,6 +25,7 @@ public class PlayerStats : MonoBehaviour
         healthSlider.maxValue = MAX_HEALTH;
         healthSlider.value = currentHealth;
         level = 1;
+        levelUi.text = level.ToString();
         currentExp = 0;
         enemyCollider = GetComponent<CapsuleCollider>();
         expCollider = GetComponent<SphereCollider>();
@@ -36,11 +37,12 @@ public class PlayerStats : MonoBehaviour
         if(collider.tag == "XP")
         {
             //probably want to abstract this out to the exp object
-            currentExp+=5;
+            currentExp+=25;
             if (currentExp >= MAX_EXP)
             {
                 currentExp = currentExp % MAX_EXP;
                 level++;
+                levelUi.text = level.ToString();
             }
             Destroy(collider.gameObject);
         }
