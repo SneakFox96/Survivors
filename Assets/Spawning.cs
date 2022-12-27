@@ -47,16 +47,17 @@ public class Spawning : MonoBehaviour
         GameObject enemy = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Vector3 newPos;
         enemy.AddComponent<Rigidbody>();
-        float rx = Random.Range(-15, -10);
-        float rz = Random.Range(-15, -10);
+        enemy.tag = "enemy";
+        float rx = Random.Range(-15, 15);
+        float rz = Random.Range(-15, 15);
         float y = target.position.y;
         newPos = new Vector3(target.position.x+rx, y, target.position.z+rz);
         //If the spawn location is within 5 units, remake the spawn location
         while(Vector3.Distance(newPos, target.position) < 5 && Vector3.Distance(newPos, target.position) > 0)
         {
             emerygencyLoopBreaker--;
-            rx = Random.Range(-15, -10);
-            rz = Random.Range(-15, -10);
+            rx = Random.Range(-15, 15);
+            rz = Random.Range(-15, 15);
             newPos = new Vector3(target.position.x+rx, y, target.position.z+rz);
             if (emerygencyLoopBreaker == 0)
             {

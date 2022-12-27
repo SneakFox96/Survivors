@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
+
+    public TextMeshProUGUI levelUi;
+    public Slider healthSlider;
     public static float MAX_HEALTH = 100f;
     public static float MAX_EXP = 100;
     public static int MAX_LEVEL = 100;
@@ -17,6 +22,8 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         currentHealth = MAX_HEALTH;
+        healthSlider.maxValue = MAX_HEALTH;
+        healthSlider.value = currentHealth;
         level = 1;
         currentExp = 0;
         enemyCollider = GetComponent<CapsuleCollider>();
@@ -32,12 +39,26 @@ public class PlayerStats : MonoBehaviour
             currentExp+=5;
             if (currentExp >= MAX_EXP)
             {
-                currentExp = 0;
+                currentExp = currentExp % MAX_EXP;
                 level++;
             }
             Destroy(collider.gameObject);
         }
 
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if(collision.collider.CompareTag("enemy"))
+        {
+            currentHealth--;
+            healthSlider.value = currentHealth;
+            if(currentHealth <=0)
+            {
+                Debug.Log("GameOver");
+                Destroy(gameObject);
+            }
+        }
     }
 
     // Update is called once per frame
