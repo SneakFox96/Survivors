@@ -11,12 +11,12 @@ public class Spawning : MonoBehaviour
     private GameObject[] enemies;
     private int mobCount = 0;
 
+    public GameObject Enemy;
     // Start is called before the first frame update
     void Start()
     {
         enemies = new GameObject[MOB_CAP];
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -44,10 +44,8 @@ public class Spawning : MonoBehaviour
     GameObject createEnemy()
     {
         int emerygencyLoopBreaker = 999;
-        GameObject enemy = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        GameObject enemy = Instantiate(Enemy, Vector3.zero, target.rotation);
         Vector3 newPos;
-        enemy.AddComponent<Rigidbody>();
-        enemy.tag = "enemy";
         float rx = Random.Range(-15, 15);
         float rz = Random.Range(-15, 15);
         float y = target.position.y;
