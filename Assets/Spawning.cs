@@ -22,7 +22,7 @@ public class Spawning : MonoBehaviour
     {
         float step = Time.deltaTime * enemySpeed;
         spawnTime -= Time.deltaTime;
-        if (spawnTime <= 0)
+        if (spawnTime <= 0 || mobCount == 0)
         {
             if (mobCount < MOB_CAP)
             {
@@ -43,12 +43,28 @@ public class Spawning : MonoBehaviour
 
     GameObject createEnemy()
     {
+        int emerygencyLoopBreaker = 999;
         GameObject enemy = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        Vector3 newPos;
         enemy.AddComponent<Rigidbody>();
-        float rx = Random.Range(10, 15);
-        float rz = Random.Range(10, 15);
+        float rx = Random.Range(-15, -10);
+        float rz = Random.Range(-15, -10);
+        float y = target.position.y;
+        newPos = new Vector3(target.position.x+rx, y, target.position.z+rz);
+        //If the spawn location is within 5 units, remake the spawn location
+        while(Vector3.Distance(newPos, target.position) < 5 && Vector3.Distance(newPos, target.position) > 0)
+        {
+            emerygencyLoopBreaker--;
+            rx = Random.Range(-15, -10);
+            rz = Random.Range(-15, -10);
+            newPos = new Vector3(target.position.x+rx, y, target.position.z+rz);
+            if (emerygencyLoopBreaker == 0)
+            {
+                Debug.Log("Emergency loop break");
+                break;
+            }
+        }
         enemy.transform.position = new Vector3(target.position.x+rx, target.position.y, target.position.z+rz);
-        Debug.Log("Enemy created");
         return enemy;
     }
 }
