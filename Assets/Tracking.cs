@@ -12,7 +12,7 @@ public class Tracking: MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(transform)
+        if(target)
         {
             transform.position = new Vector3(target.position.x, target.position.y+height, target.position.z+distance);
         }

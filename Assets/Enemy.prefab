@@ -127,4 +127,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b060746b1a044c4a9b86645afe5827a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  XpOrb: {fileID: 8369160204091948411, guid: 31fe5878003d252438a85a265458d3a4, type: 3}
   enemySpeed: 4

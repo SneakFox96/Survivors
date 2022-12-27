@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    public GameObject XpOrb;
     public float enemySpeed = 4.0f;
     GameObject[] enemyTargets;
     GameObject target;
@@ -31,8 +32,14 @@ public class EnemyBehavior : MonoBehaviour
     {
         if(collision.collider.CompareTag("projectile"))
         {
+            Vector3 pos = gameObject.transform.position;
             Destroy(gameObject);
-            //Delte from enemies in spawning
+            float rng = Random.Range(0, 1);
+
+            if (rng >= 0.49)
+            {
+                Instantiate(XpOrb, pos, Quaternion.identity);
+            }
         }
     }
 
