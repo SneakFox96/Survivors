@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private float fireRate = 1.0f;
 
     private GameObject[] projectiles;
+    private Animator anim;
+    public bool IsWalking;
+
 
     public float projectileSpeed = 50f;
     public GameObject Projectile;
@@ -21,14 +24,21 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
+        Debug.Log(anim);
+
         controller = gameObject.AddComponent<CharacterController>();
         projectiles = GameObject.FindGameObjectsWithTag("projectile");
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!gameObject)
+        anim.SetBool("Is Walking", IsWalking);
+
+        if (!gameObject)
         {
             return;
         }
@@ -39,7 +49,13 @@ public class PlayerController : MonoBehaviour
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
+            IsWalking = true;
         }
+        if (move == Vector3.zero)
+        {
+            IsWalking = false;
+        }
+
 
         controller.Move(velocity  *Time.deltaTime);
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -67,6 +83,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         projectiles = GameObject.FindGameObjectsWithTag("projectile");
+
     }
 
     GameObject createProjectile()

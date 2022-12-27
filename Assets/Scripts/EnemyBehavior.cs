@@ -25,6 +25,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             float step = Time.deltaTime * enemySpeed;
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+            transform.LookAt(target.transform.position);
         }
     }
 
@@ -34,9 +35,9 @@ public class EnemyBehavior : MonoBehaviour
         {
             Vector3 pos = gameObject.transform.position;
             Destroy(gameObject);
-            float rng = Random.Range(0, 1);
+            int rng = Random.Range(0, 100);
 
-            if (rng >= 0.49)
+            if (rng >= 49)
             {
                 Instantiate(XpOrb, pos, Quaternion.identity);
             }
