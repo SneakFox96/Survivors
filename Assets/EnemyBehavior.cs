@@ -16,10 +16,23 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!gameObject)
+        {
+            return;
+        }
         if(target)
         {
             float step = Time.deltaTime * enemySpeed;
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("projectile"))
+        {
+            Destroy(gameObject);
+            //Delte from enemies in spawning
         }
     }
 

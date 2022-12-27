@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Spawning : MonoBehaviour
 {
-    const int MOB_CAP = 20;
-    public Transform target;
+    public EnemyBehavior enemyBehavior;
+    const int MOB_CAP = 50;
+    const float DEFAULT_SPAWN_TIME = 1.0f;
     public float enemySpeed = 4.0f;
-    public float spawnTime = 10f;
+    public float spawnTime = DEFAULT_SPAWN_TIME;
     private GameObject[] enemies;
     private int mobCount = 0;
 
@@ -30,27 +31,22 @@ public class Spawning : MonoBehaviour
                 enemies[mobCount] = enemy;
                 mobCount++;
             }
-            spawnTime = 10f;
-        }
-        foreach(GameObject enemy in enemies)
-        {
-            if (enemy)
-            {
-                enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, target.position, step);
-            }
+            spawnTime = DEFAULT_SPAWN_TIME;
         }
     }
 
     GameObject createEnemy()
     {
-        int emerygencyLoopBreaker = 999;
-        GameObject enemy = Instantiate(Enemy, Vector3.zero, target.rotation);
-        Vector3 newPos;
+        //int emerygencyLoopBreaker = 999;
+        Vector3 newPos = FindAveragePlayerPositions();
+        Debug.Log(newPos);
         float rx = Random.Range(-15, 15);
         float rz = Random.Range(-15, 15);
-        float y = target.position.y;
-        newPos = new Vector3(target.position.x+rx, y, target.position.z+rz);
+        float y = 1f;
+        newPos += new Vector3(rx, y, rz);
+        Debug.Log(newPos);
         //If the spawn location is within 5 units, remake the spawn location
+        /**
         while(Vector3.Distance(newPos, target.position) < 5 && Vector3.Distance(newPos, target.position) > 0)
         {
             emerygencyLoopBreaker--;
@@ -63,7 +59,18 @@ public class Spawning : MonoBehaviour
                 break;
             }
         }
-        enemy.transform.position = new Vector3(target.position.x+rx, target.position.y, target.position.z+rz);
-        return enemy;
+        **/
+        return Instantiate(Enemy, newPos, Quaternion.identity);
+    }
+    Vector3 FindAveragePlayerPositions()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        Vector3 result = Vector3.zero;
+        foreach (GameObject player in players) 
+        {
+            result += player.transform.position;
+        }
+        return result/players.Length;
     }
 }
