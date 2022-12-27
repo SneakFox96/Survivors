@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 9114484479378489179}
   - component: {fileID: 9114484479378489180}
   - component: {fileID: 9114484479378489181}
-  - component: {fileID: 9114484479378489182}
   - component: {fileID: 9114484479378489175}
   - component: {fileID: 9114484479378489176}
+  - component: {fileID: 1432617513133724817}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -119,21 +119,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &9114484479378489182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9114484479378489183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93d0cf2635f04694091967a5b047bb79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsWalking: 0
-  projectileSpeed: 50
-  Projectile: {fileID: 4046381337585233100, guid: 76049776cb3e1d84fac2276810832fcc, type: 3}
 --- !u!114 &9114484479378489175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUi: {fileID: 0}
   healthSlider: {fileID: 0}
+  maxHealth: 100
+  maxExp: 100
   currentHealth: 0
   level: 0
   currentExp: 0
@@ -164,6 +151,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1432617513133724817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9114484479378489183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d0cf2635f04694091967a5b047bb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsWalking: 0
+  projectileSpeed: 5
+  Projectile: {fileID: 4046381337585233100, guid: 76049776cb3e1d84fac2276810832fcc, type: 3}
 --- !u!1001 &6235482423177211443
 PrefabInstance:
   m_ObjectHideFlags: 0

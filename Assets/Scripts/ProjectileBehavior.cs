@@ -10,7 +10,7 @@ public class ProjectileBehavior : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("enemy"))
+        if (collision.collider.CompareTag("enemy"))
         {
             Destroy(gameObject);
         }
@@ -21,7 +21,7 @@ public class ProjectileBehavior : MonoBehaviour
     {
         if (!gameObject) return;
         duration -= Time.deltaTime;
-        if(duration <= 0)
+        if (duration <= 0)
         {
             Destroy(gameObject);
         }

@@ -9,8 +9,8 @@ public class PlayerStats : MonoBehaviour
 
     public TextMeshProUGUI levelUi;
     public Slider healthSlider;
-    public static float MAX_HEALTH = 100f;
-    public static float MAX_EXP = 100;
+    public float maxHealth = 100f;
+    public float maxExp = 100f;
     public static int MAX_LEVEL = 100;
     public float currentHealth;
     public int level;
@@ -21,8 +21,8 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = MAX_HEALTH;
-        healthSlider.maxValue = MAX_HEALTH;
+        currentHealth = maxHealth;
+        healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
         level = 1;
         levelUi.text = level.ToString();
@@ -33,14 +33,14 @@ public class PlayerStats : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        
-        if(collider.tag == "XP")
+
+        if (collider.tag == "XP")
         {
-            //probably want to abstract this out to the exp object
-            currentExp+=25;
-            if (currentExp >= MAX_EXP)
+            currentExp += 33;
+            if (currentExp >= maxExp)
             {
-                currentExp = currentExp % MAX_EXP;
+                currentExp = currentExp % maxExp;
+                maxExp = maxExp * 1.9f;
                 level++;
                 levelUi.text = level.ToString();
             }
@@ -51,11 +51,11 @@ public class PlayerStats : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if(collision.collider.CompareTag("enemy"))
+        if (collision.collider.CompareTag("enemy"))
         {
             currentHealth--;
             healthSlider.value = currentHealth;
-            if(currentHealth <=0)
+            if (currentHealth <= 0)
             {
                 Debug.Log("GameOver");
                 Destroy(gameObject);
@@ -66,6 +66,6 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

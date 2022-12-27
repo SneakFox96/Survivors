@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FillStatusBar: MonoBehaviour
+public class FillStatusBar : MonoBehaviour
 {
     public PlayerStats playerStats;
     public Image fillImage;
@@ -17,7 +17,7 @@ public class FillStatusBar: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float fillValue = playerStats.currentExp / PlayerStats.MAX_EXP;
+        float fillValue = playerStats.currentExp / playerStats.maxExp;
         slider.value = fillValue;
     }
 }
