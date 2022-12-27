@@ -10,41 +10,37 @@ public class Spawning : MonoBehaviour
     public float enemySpeed = 4.0f;
     public float spawnTime = DEFAULT_SPAWN_TIME;
     private GameObject[] enemies;
-    private int mobCount = 0;
 
     public GameObject Enemy;
     // Start is called before the first frame update
     void Start()
     {
-        enemies = new GameObject[MOB_CAP];
+        enemies = GameObject.FindGameObjectsWithTag("enemy");
     }
     // Update is called once per frame
     void Update()
     {
         float step = Time.deltaTime * enemySpeed;
         spawnTime -= Time.deltaTime;
-        if (spawnTime <= 0 || mobCount == 0)
+        if (spawnTime <= 0 || enemies.Length == 0)
         {
-            if (mobCount < MOB_CAP)
+            if (enemies.Length < MOB_CAP)
             {
                 GameObject enemy = createEnemy();
-                enemies[mobCount] = enemy;
-                mobCount++;
             }
             spawnTime = DEFAULT_SPAWN_TIME;
         }
+        enemies = GameObject.FindGameObjectsWithTag("enemy");
     }
 
     GameObject createEnemy()
     {
         //int emerygencyLoopBreaker = 999;
         Vector3 newPos = FindAveragePlayerPositions();
-        Debug.Log(newPos);
         float rx = Random.Range(-15, 15);
         float rz = Random.Range(-15, 15);
         float y = 1f;
         newPos += new Vector3(rx, y, rz);
-        Debug.Log(newPos);
         //If the spawn location is within 5 units, remake the spawn location
         /**
         while(Vector3.Distance(newPos, target.position) < 5 && Vector3.Distance(newPos, target.position) > 0)

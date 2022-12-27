@@ -13,14 +13,16 @@ public class PlayerController : MonoBehaviour
     private float nextFire;
     private float fireRate = 1.0f;
 
-    private float projectileSpeed = 100f;
-    private List<GameObject> projectiles;
+    private GameObject[] projectiles;
+
+    public float projectileSpeed = 50f;
+    public GameObject Projectile;
     
     // Start is called before the first frame update
     void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
-        projectiles = new List<GameObject>();
+        projectiles = GameObject.FindGameObjectsWithTag("projectile");
     }
 
     // Update is called once per frame
@@ -52,10 +54,9 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            if(projectiles.Count < MAX_PROJECTILES)
+            if(projectiles.Length< MAX_PROJECTILES)
             {
                 GameObject bullet=  createProjectile();
-                projectiles.Add(bullet);
             }
         }
         foreach(GameObject proj in projectiles)
@@ -65,17 +66,12 @@ public class PlayerController : MonoBehaviour
                 proj.GetComponent<Rigidbody>().velocity = transform.forward * projectileSpeed;
             }
         }
+        projectiles = GameObject.FindGameObjectsWithTag("projectile");
     }
 
     GameObject createProjectile()
     {
-        GameObject bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        bullet.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
-        bullet.transform.position = transform.position + transform.forward;
-        bullet.transform.rotation = transform.rotation;
-        bullet.tag = "projectile";
-        bullet.AddComponent<Rigidbody>();
-        return bullet;
+        return Instantiate(Projectile, transform.position+transform.forward, transform.rotation);
     }
 
 }
