@@ -210,7 +210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -33.2}
+  m_AnchoredPosition: {x: 81.3, y: -33.2}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &91345496
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 4
-  spawnTime: 1
+  spawnTime: 5
   Enemy: {fileID: 8185124317506959621, guid: 45fc2ca5bb899d148942b0675ef5a525, type: 3}
 --- !u!64 &109220321
 MeshCollider:
@@ -497,7 +497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: -0.000005722046}
+  m_AnchoredPosition: {x: 0, y: -0.0000076293945}
   m_SizeDelta: {x: -10.007, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &311091948
@@ -679,7 +679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.8134, y: 0}
+  m_AnchoredPosition: {x: -4.813385, y: 0}
   m_SizeDelta: {x: 0.3732, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &504681616
@@ -817,7 +817,7 @@ RectTransform:
   - {fileID: 1211700583}
   - {fileID: 1724136208}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1273,10 +1273,10 @@ RectTransform:
   m_Father: {fileID: 529071547}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -472.06134, y: 171}
-  m_SizeDelta: {x: 155.8773, y: 20}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 78.4, y: -85.3}
+  m_SizeDelta: {x: 155.87732, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1211700584
 MonoBehaviour:
@@ -1491,7 +1491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: -0.0000009536743}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0.000015259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1612995245
@@ -1767,9 +1767,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 5020786725456592586, guid: 76049776cb3e1d84fac2276810832fcc, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020786725456592586, guid: 76049776cb3e1d84fac2276810832fcc, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020786725456592586, guid: 76049776cb3e1d84fac2276810832fcc, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5775974471957871764, guid: 76049776cb3e1d84fac2276810832fcc, type: 3}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 4
+=======
+      value: 5
+>>>>>>> development
       objectReference: {fileID: 0}
     - target: {fileID: 5775974471957871764, guid: 76049776cb3e1d84fac2276810832fcc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1821,9 +1837,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1432617513133724817, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
-      propertyPath: projectileSpeed
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 616100009}
     - target: {fileID: 9114484479378489175, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
       propertyPath: levelUi
       value: 
@@ -1875,22 +1891,6 @@ PrefabInstance:
     - target: {fileID: 9114484479378489177, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9114484479378489180, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 54498e5cb7ecff047b4fca60fc132573, type: 2}
-    - target: {fileID: 9114484479378489181, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9114484479378489181, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9114484479378489182, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9114484479378489183, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
       propertyPath: m_Name

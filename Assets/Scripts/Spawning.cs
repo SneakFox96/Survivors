@@ -38,8 +38,7 @@ public class Spawning : MonoBehaviour
         Vector3 avgPos = FindAveragePlayerPositions();
         float rx = Random.Range(-25, 25);
         float rz = Random.Range(-25, 25);
-        float y = 1f;
-        Vector3 newPos = avgPos + new Vector3(rx, y, rz);
+        Vector3 newPos = avgPos + new Vector3(rx, 0, rz);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach(GameObject player in players)
         {
@@ -48,8 +47,7 @@ public class Spawning : MonoBehaviour
                 loopBreak--;
                 rx = Random.Range(-25, 25);
                 rz = Random.Range(-25, 25);
-                y = 1f;
-                newPos = avgPos + new Vector3(rx, y, rz);
+                newPos = avgPos + new Vector3(rx, 0, rz);
                 if(loopBreak == 0)
                 {
                     break;

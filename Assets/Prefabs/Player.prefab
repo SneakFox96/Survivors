@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsWalking: 0
+  cam: {fileID: 0}
   projectileSpeed: 5
   Projectile: {fileID: 4046381337585233100, guid: 76049776cb3e1d84fac2276810832fcc, type: 3}
 --- !u!1001 &6235482423177211443
@@ -183,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 635320baffc258d4793e2e87c1f8db13, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 635320baffc258d4793e2e87c1f8db13, type: 3}
       propertyPath: m_LocalPosition.z

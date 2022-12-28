@@ -6,18 +6,18 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    private static int MAX_PROJECTILES = 30;
     private CharacterController controller;
     private float speed = 5.0f;
     private float nextFire;
-    private float fireRate = 0.25f;
+    private float fireRate = 1.25f;
 
-    private GameObject[] projectiles;
     private Animator anim;
+    private Vector3 hitpoint;
     public bool IsWalking;
+    public Camera cam;
 
 
-    public float projectileSpeed = 5f;
+    private float projectileSpeed = 30f;
     public GameObject Projectile;
 
     // Start is called before the first frame update
@@ -25,9 +25,6 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         controller = gameObject.AddComponent<CharacterController>();
-        projectiles = GameObject.FindGameObjectsWithTag("projectile");
-
-
     }
 
     // Update is called once per frame
@@ -53,37 +50,51 @@ public class PlayerController : MonoBehaviour
             IsWalking = false;
         }
 
-        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
+        Vector3 pointTo; 
         if (ground.Raycast(cameraRay, out rayLength))
         {
-            Vector3 pointTo = cameraRay.GetPoint(rayLength);
+            pointTo = cameraRay.GetPoint(rayLength);
             transform.LookAt(new Vector3(pointTo.x, transform.position.y, pointTo.z));
-        }
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        } 
+        if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            if (projectiles.Length < MAX_PROJECTILES)
-            {
-                GameObject bullet = createProjectile();
-            }
+            ShootProjectile();
         }
-        foreach (GameObject proj in projectiles)
-        {
-            if (proj)
-            {
-                proj.GetComponent<Rigidbody>().AddForce(transform.forward*projectileSpeed, ForceMode.VelocityChange);
-                // proj.GetComponent<Rigidbody>().velocity = transform.forward * projectileSpeed;
-            }
-        }
-        projectiles = GameObject.FindGameObjectsWithTag("projectile");
-
     }
 
+    void ShootProjectile()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            hitpoint = hit.point;
+
+        } else 
+        {
+            hitpoint = ray.GetPoint(100);
+        }
+        createProjectile();
+    }
     GameObject createProjectile()
     {
-        return Instantiate(Projectile, transform.position + transform.forward, transform.rotation);
+        hitpoint.y = transform.position.y;
+        var direction = (hitpoint-transform.position).normalized;
+        var projectile = Instantiate(
+            Projectile, 
+            new Vector3(
+                transform.position.x + direction.x,
+                transform.position.y,
+                transform.position.z + direction.z
+            ),
+            transform.rotation
+        );
+        projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
+        return projectile;
     }
 
 }
