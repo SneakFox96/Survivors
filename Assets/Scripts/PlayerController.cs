@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         controller = gameObject.AddComponent<CharacterController>();
+
     }
 
     // Update is called once per frame
