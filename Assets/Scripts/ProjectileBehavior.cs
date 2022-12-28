@@ -7,12 +7,23 @@ public class ProjectileBehavior : MonoBehaviour
     public static int projectileCount = 0;
     public float duration = 10f;
     // Start is called before the first frame update
+    private SphereCollider sphereCollider;
+
+    void Awake()
+    {
+        sphereCollider = GetComponent<SphereCollider>();
+    }
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collided with" + collision.collider.tag);
         if (collision.collider.CompareTag("enemy"))
         {
             Destroy(gameObject);
+        } 
+        else if(collision.collider.CompareTag("Player"))
+        {
+            Physics.IgnoreCollision(collision.collider, sphereCollider);
         }
     }
 

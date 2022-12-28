@@ -43,6 +43,20 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
     }
+    void OnCollisionStay(Collision collision)
+    {
+        if(collision.collider.CompareTag("projectile"))
+        {
+            Vector3 pos = gameObject.transform.position;
+            Destroy(gameObject);
+            int rng = Random.Range(0, 100);
+
+            if (rng >= 49)
+            {
+                Instantiate(XpOrb, pos, Quaternion.identity);
+            }
+        }
+    }
 
     GameObject FindClosestEnemy()
     {
