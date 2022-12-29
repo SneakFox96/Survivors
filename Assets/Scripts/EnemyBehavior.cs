@@ -24,8 +24,13 @@ public class EnemyBehavior : MonoBehaviour
         if(target)
         {
             float step = Time.deltaTime * enemySpeed;
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
-            transform.LookAt(target.transform.position);
+            var newPos = new Vector3(
+                target.transform.position.x,
+                transform.position.y,
+                target.transform.position.z
+            );
+            transform.LookAt(newPos);
+            transform.position = Vector3.MoveTowards(transform.position, newPos, step);
         }
     }
 
