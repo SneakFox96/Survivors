@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    private bool isColliding;
     public GameObject XpOrb;
     public float enemySpeed = 4.0f;
     GameObject[] enemyTargets;
@@ -12,6 +13,7 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         target = FindClosestEnemy();
+        isColliding = false;
     }
 
     // Update is called once per frame
@@ -21,27 +23,23 @@ public class EnemyBehavior : MonoBehaviour
         {
             return;
         }
-        if(target)
+        if(target && !isColliding)
         {
             float step = Time.deltaTime * enemySpeed;
+            transform.LookAt(
+                new Vector3(
+                    target.transform.position.x,
+                    transform.position.y,
+                    target.transform.position.z
+                )
+            );
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
-            transform.LookAt(target.transform.position);
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionExit(Collision collision)
     {
-        if(collision.collider.CompareTag("projectile"))
-        {
-            Vector3 pos = gameObject.transform.position;
-            Destroy(gameObject);
-            int rng = Random.Range(0, 100);
-
-            if (rng >= 49)
-            {
-                Instantiate(XpOrb, pos, Quaternion.identity);
-            }
-        }
+        isColliding = false;
     }
     void OnCollisionStay(Collision collision)
     {

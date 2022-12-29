@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
 {
-    public static int projectileCount = 0;
     public float duration = 10f;
     // Start is called before the first frame update
     private SphereCollider sphereCollider;
@@ -16,7 +15,6 @@ public class ProjectileBehavior : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided with" + collision.collider.tag);
         if (collision.collider.CompareTag("enemy"))
         {
             Destroy(gameObject);
