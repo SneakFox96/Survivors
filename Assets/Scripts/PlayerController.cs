@@ -7,10 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
-    private float speed = 5.0f;
     private float nextFire;
-    private float fireRate = 1.25f;
-
     private Animator anim;
     private Vector3 hitpoint;
     public bool IsWalking;
@@ -19,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private float projectileSpeed = 30f;
     public GameObject Projectile;
+    public PlayerStats stats;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +37,17 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("Is Walking", IsWalking);
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * speed);
+        var horizontal = Input.GetAxis("Horizontal");
+        var vertical = Input.GetAxis("Vertical");
+        Vector3 move = new Vector3(horizontal, 0, vertical);
+        if(horizontal != 0 && vertical != 0)
+        {
+            controller.Move(move * Time.deltaTime * stats.speed * 0.9f);
+        }
+        else
+        {
+            controller.Move(move * Time.deltaTime * stats.speed);
+        }
 
         if (move != Vector3.zero)
         {
@@ -63,7 +70,7 @@ public class PlayerController : MonoBehaviour
         } 
         if (Time.time > nextFire)
         {
-            nextFire = Time.time + fireRate;
+            nextFire = Time.time + stats.fireRate;
             ShootProjectile();
         }
         if(transform.position.y > 1f)

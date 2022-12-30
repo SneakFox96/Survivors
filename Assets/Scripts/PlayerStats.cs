@@ -14,6 +14,8 @@ public class PlayerStats : MonoBehaviour
     public static int MAX_LEVEL = 100;
     public float currentHealth;
     public int level;
+    public float fireRate;
+    public float speed;
     //can scale this later
     public float currentExp;
     Collider enemyCollider;
@@ -29,6 +31,8 @@ public class PlayerStats : MonoBehaviour
         currentExp = 0;
         enemyCollider = GetComponent<CapsuleCollider>();
         expCollider = GetComponent<SphereCollider>();
+        fireRate = 1.25f;
+        speed = 5f;
     }
 
     void OnTriggerEnter(Collider collider)
@@ -43,6 +47,8 @@ public class PlayerStats : MonoBehaviour
                 maxExp = maxExp * 1.9f;
                 level++;
                 levelUi.text = level.ToString();
+                speed += 0.1f;
+                fireRate += 0.1f;
             }
             Destroy(collider.gameObject);
         }
