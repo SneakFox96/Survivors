@@ -29,12 +29,12 @@ public class PlayerStats : MonoBehaviour
     public float fireRate; //how long until weapon fires again
     public float weaponDuration; //how long the weapon will last on screen
     public float weaponArea; //how large the area of the weapon
-    public float weaponProjectileSpeed; //how fast the projectile on weapons will go
+    public float weaponProjectileSpeed = 30f; //how fast the projectile on weapons will go
     public float weaponDamage = 1f; //the damage the projectile will do (base weapon dmg * weapon dmg);
     public float projectileCount; //how many times the weapon will fire at single instance
     
     Collider enemyCollider;
-    Collider expCollider;
+    public Collider expCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,9 @@ public class PlayerStats : MonoBehaviour
         enemyCollider = GetComponent<CapsuleCollider>();
         expCollider = GetComponent<SphereCollider>();
         fireRate = 1.25f;
-        speed = 5f;
+        speed = 8f;
+        weaponProjectileSpeed = 30f;
+
     }
 
     void OnTriggerEnter(Collider collider)

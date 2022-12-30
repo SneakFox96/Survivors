@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
 
 
-    private float projectileSpeed = 30f;
     public GameObject Projectile;
     public PlayerStats stats;
 
@@ -39,10 +38,10 @@ public class PlayerController : MonoBehaviour
 
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        Vector3 move = new Vector3(horizontal, 0, vertical);
+        Vector3 move = new Vector3(horizontal, 0, vertical).normalized;
         if(horizontal != 0 && vertical != 0)
         {
-            controller.Move(move * Time.deltaTime * stats.speed * 0.9f);
+            controller.Move(move * Time.deltaTime * stats.speed);
         }
         else
         {
@@ -108,7 +107,7 @@ public class PlayerController : MonoBehaviour
             ),
             transform.rotation
         );
-        projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
+        projectile.GetComponent<Rigidbody>().velocity = direction * stats.weaponProjectileSpeed;
         return projectile;
     }
 

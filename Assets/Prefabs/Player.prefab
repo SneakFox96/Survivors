@@ -161,7 +161,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9114484479378489183}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 54498e5cb7ecff047b4fca60fc132573, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.7
@@ -196,15 +196,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe95ca1b1a5346438c8c2305e8215d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelUi: {fileID: 0}
   healthSlider: {fileID: 0}
   maxHealth: 100
-  maxExp: 100
   currentHealth: 0
+  healthRegen: 0
+  levelUi: {fileID: 0}
+  maxExp: 100
   level: 0
-  fireRate: 0
-  speed: 0
   currentExp: 0
+  speed: 0
+  magnetSize: 0
+  playerLuck: 0
+  playerGreed: 0
+  fireRate: 0
+  weaponDuration: 0
+  weaponArea: 0
+  weaponProjectileSpeed: 0
+  weaponDamage: 1
+  projectileCount: 0
+  expCollider: {fileID: 9114484479378489176}
 --- !u!135 &9114484479378489176
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -233,7 +243,7 @@ MonoBehaviour:
   IsWalking: 0
   cam: {fileID: 0}
   Projectile: {fileID: 4046381337585233100, guid: 76049776cb3e1d84fac2276810832fcc, type: 3}
-  stats: {fileID: 0}
+  stats: {fileID: 9114484479378489175}
 --- !u!114 &8115306481779292564
 MonoBehaviour:
   m_ObjectHideFlags: 0

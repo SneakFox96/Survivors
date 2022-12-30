@@ -1836,10 +1836,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 616100009}
-    - target: {fileID: 1432617513133724817, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
-      propertyPath: stats
-      value: 
-      objectReference: {fileID: 637324536}
     - target: {fileID: 9114484479378489175, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
       propertyPath: levelUi
       value: 
@@ -1892,10 +1888,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9114484479378489180, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 54498e5cb7ecff047b4fca60fc132573, type: 2}
     - target: {fileID: 9114484479378489183, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
       propertyPath: m_Name
       value: Player
