@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7395112221252942318}
   m_Layer: 7
   m_Name: CharacterCollider
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,10 +59,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 1.2
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.57, z: 0}
 --- !u!1 &8185124317506959621
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XpOrb: {fileID: 8369160204091948411, guid: 31fe5878003d252438a85a265458d3a4, type: 3}
-  enemySpeed: 0
+  enemySpeed: 4
 --- !u!114 &5085521452034012608
 MonoBehaviour:
   m_ObjectHideFlags: 0

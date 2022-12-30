@@ -66,6 +66,12 @@ public class PlayerController : MonoBehaviour
             nextFire = Time.time + fireRate;
             ShootProjectile();
         }
+        if(transform.position.y > 1f)
+        {
+            var pos = transform.position;
+            pos.y = 1;
+            transform.position = pos;
+        }
     }
 
     void ShootProjectile()
