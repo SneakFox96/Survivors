@@ -32,9 +32,10 @@ public class PlayerStats : MonoBehaviour
     public float weaponProjectileSpeed = 30f; //how fast the projectile on weapons will go
     public float weaponDamage = 1f; //the damage the projectile will do (base weapon dmg * weapon dmg);
     public float projectileCount; //how many times the weapon will fire at single instance
-    
-    Collider enemyCollider;
-    public Collider expCollider;
+
+
+    Collider enemyCollider; //this isnt used btw
+    SphereCollider expCollider; 
 
     // Start is called before the first frame update
     void Start()
@@ -46,10 +47,12 @@ public class PlayerStats : MonoBehaviour
         levelUi.text = level.ToString();
         currentExp = 0;
         enemyCollider = GetComponent<CapsuleCollider>();
-        expCollider = GetComponent<SphereCollider>();
+        expCollider = GetComponent<SphereCollider>();// get component of sphere collider
         fireRate = 1.25f;
-        speed = 8f;
-        weaponProjectileSpeed = 30f;
+        speed = 8f; //set player speed
+        weaponProjectileSpeed = 30f; // set weapon projectile speed
+
+        expCollider.radius = magnetSize; //change exp collider sphere size by magnetSize
 
     }
 
