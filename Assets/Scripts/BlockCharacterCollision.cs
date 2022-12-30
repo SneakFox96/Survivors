@@ -6,7 +6,7 @@ public class BlockCharacterCollision : MonoBehaviour
 {
     // Start is called before the first frame update
     public CapsuleCollider characterCollider;
-    public CapsuleCollider characterCollisionCollider;
+    public Collider characterCollisionCollider;
     void Awake()
     {
         Physics.IgnoreCollision(characterCollider, characterCollisionCollider, true);
