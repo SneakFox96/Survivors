@@ -1841,6 +1841,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 91345497}
     - target: {fileID: 9114484479378489175, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
+      propertyPath: magnetSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114484479378489175, guid: b50f7e19ace58b14b879d6a26f776038, type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 61248755}
