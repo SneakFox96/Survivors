@@ -205,7 +205,7 @@ MonoBehaviour:
   level: 0
   currentExp: 0
   speed: 0
-  magnetSize: 4
+  magnetSize: 1
   playerLuck: 0
   playerGreed: 0
   fireRate: 0

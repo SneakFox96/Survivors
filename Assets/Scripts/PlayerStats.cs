@@ -59,6 +59,7 @@ public class PlayerStats : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
 
+        //collision with EXP Orb
         if (collider.tag == "XP")
         {
             currentExp += 33;
@@ -68,16 +69,50 @@ public class PlayerStats : MonoBehaviour
                 maxExp = maxExp * 1.9f;
                 level++;
                 levelUi.text = level.ToString();
-                speed += 0.1f;
-                fireRate += 0.1f;
+
+                //for future call a function that handles leveling
+                speed += 0.1f;//temporary increments for proof
+                fireRate += 0.1f;//temporary increments for proof
             }
             Destroy(collider.gameObject);
+        }
+
+        //collision with food - increase health
+        if (collider.tag == "food")
+        {
+            //check to see if current health will heal past maxhealth
+            if (currentHealth + 25 >= maxHealth)
+            {
+                float healthToHeal;
+                healthToHeal = maxHealth - currentHealth;
+                currentHealth += healthToHeal; //will become a # lower than 25 to heal to full
+                //update value on slider
+                healthSlider.value = currentHealth;
+                //destroy food gameobject after
+                Destroy(collider.gameObject);
+            }
+            else
+            {
+                //increase current health
+                currentHealth += 25;
+                //update value on slider
+                healthSlider.value = currentHealth;
+                Destroy(collider.gameObject);
+            }
+
+            if (currentHealth >= maxHealth)
+            {
+                Destroy(collider.gameObject);
+                return;
+            }
+
         }
 
     }
 
     void OnCollisionStay(Collision collision)
     {
+        //collision with enemies
         if (collision.collider.CompareTag("enemy"))
         {
             currentHealth--;
