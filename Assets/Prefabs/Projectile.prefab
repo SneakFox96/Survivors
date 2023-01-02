@@ -140,6 +140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnergyMissileGreen
       objectReference: {fileID: 0}
+    - target: {fileID: 1792821222445216, guid: 99c114328b10529409559fdde1d5cd8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4200040148562160, guid: 99c114328b10529409559fdde1d5cd8b, type: 3}
       propertyPath: m_RootOrder
       value: 0
